@@ -20,6 +20,12 @@ class _CustomDrawerState extends State<CustomDrawer>
         AnimationController(vsync: this, duration: Duration(milliseconds: 250));
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+    _animationController.dispose();
+  }
+
   void _toggleAnimationController() {
     _animationController.isDismissed
         ? _animationController.forward()
@@ -70,6 +76,7 @@ class _CustomDrawerState extends State<CustomDrawer>
       onHorizontalDragStart: _onDragStart,
       onHorizontalDragUpdate: _onDragUpdate,
       onHorizontalDragEnd: _onDragEnd,
+      // onTapDown: ,
       // onTap: _toggleAnimationController,
       child: AnimatedBuilder(
         animation: _animationController,
